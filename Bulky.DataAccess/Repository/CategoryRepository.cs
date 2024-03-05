@@ -26,5 +26,11 @@ namespace Bulky.DataAccess.Repository
         {
             _db.categories.Update(obj);
         }
+
+        public Category GetById(int categoryId)
+        {
+            return _db.categories.Find(categoryId);
+        }
     }
 }
+

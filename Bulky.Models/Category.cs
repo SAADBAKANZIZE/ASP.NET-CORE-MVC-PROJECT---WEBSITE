@@ -16,5 +16,7 @@ namespace Bulky.Models
         [Range(1,100)]
         public int DisplayOrder { get; set; }
 
+        
+
     }
 }

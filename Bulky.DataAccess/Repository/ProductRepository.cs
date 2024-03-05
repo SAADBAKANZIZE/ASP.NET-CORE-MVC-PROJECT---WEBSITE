@@ -27,6 +27,11 @@ namespace Bulky.DataAccess.Repository
             _db.products.Update(obj);
         }
 
-        
+        public Product GetById(int productId)
+        {
+            return _db.products.Find(productId);
+        }
+
+
     }
 }
