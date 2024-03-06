@@ -14,7 +14,7 @@
             </div>
         </div>
 
-<table class="table table-bordered table-striped">
+<table id="tblData" class="table table-bordered table-striped">
     <thead>
     <tr>
 
@@ -33,10 +33,11 @@
         </th>
         <th>
                     Action
-        </th>
+        </th> 
     </tr>
     </thead>
-    <tbody>
+        @*
+        <tbody>
         @foreach(var obj in Model.OrderBy(u=>u.Title))
         {
         <tr>
@@ -50,7 +51,10 @@
                 @obj.ISBN
             </td>
             <td>
-               
+               @obj.Category.Name
+            </td>
+            <td>
+                        <img src=@obj.ImageUrl />
             </td>
             <td>
                 <div class="w-75 btn-group" role="group">
@@ -71,7 +75,11 @@
 
         </tr>
         }
-    </tbody>
+        </tbody>*@
 
 </table>
 </div>
+
+@section Scripts{
+    <script src="~/js/product.js"></script>
+}

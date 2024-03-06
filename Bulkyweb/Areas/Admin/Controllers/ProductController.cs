@@ -19,7 +19,7 @@ namespace Bulkyweb.Areas.Admin.Controllers
         }
         public IActionResult Index()
         {
-            List<Product> objProductList = _unitOfWork.Product.GetAll().ToList();
+            List<Product> objProductList = _unitOfWork.Product.GetAll(includeProperties:"Category").ToList();
            
             return View(objProductList);
         }
@@ -77,7 +77,7 @@ namespace Bulkyweb.Areas.Admin.Controllers
                         file.CopyTo(fileStream);
                     }
 
-                    productVM.Product.ImageUrl = @"C:\Users\baknz\OneDrive\Bureau\project\Bulky\Bulkyweb\wwwroot\images\product\" + fileName;
+                    productVM.Product.ImageUrl = @"http://192.168.56.1:8081/" + fileName;
                 }
                 if(productVM.Product.Id == 0)
                 {
@@ -188,6 +188,17 @@ namespace Bulkyweb.Areas.Admin.Controllers
 
 
 
+        #region API CALLS
+
+        [HttpGet]
+        public IActionResult GetAll()
+        {
+            List<Product> objProductList = _unitOfWork.Product.GetAll(includeProperties: "Category").ToList();
+
+            return Json(new {data = objProductList});
+        }
+
+        #endregion
 
     }
 }
